@@ -8,9 +8,10 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "build-library": "ng build twng-elements-ui",
-    "start-library": "pnpm link ./projects/twng-elements-ui/ && ng serve --watch"
+    "start-library": "pnpm link ./projects/twng-elements-ui/ && ng serve --watch",
+    "build:css": "npx tailwindcss -i ./src/styles.css -o ./src/tauilwind.css --minify"
   },
-  "private": true,
+  "private": false,
   "dependencies": {
     "@angular/common": "^19.2.0",
     "@angular/compiler": "^19.2.0",
@@ -22,13 +23,13 @@
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "twng-elements-ui": "link:projects/twng-elements-ui",
-    "twng-elments-ui": "link:projects/twng-elments-ui",
     "zone.js": "~0.15.0"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^19.2.8",
     "@angular/cli": "^19.2.8",
     "@angular/compiler-cli": "^19.2.0",
+    "@tailwindcss/postcss": "^4.1.7",
     "@types/jasmine": "~5.1.0",
     "jasmine-core": "~5.6.0",
     "karma": "~6.4.0",
@@ -37,6 +38,8 @@
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.1.0",
     "ng-packagr": "^19.2.0",
+    "postcss": "^8.5.3",
+    "tailwindcss": "^4.1.7",
     "typescript": "~5.7.2"
   },
   "pnpm": {

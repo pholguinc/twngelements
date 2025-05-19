@@ -177,7 +177,7 @@
   }
 </style>
 
-<main class="main">
+<main class="main bg-red-400">
   <div class="content">
     <div class="left-side">
       <svg
@@ -322,7 +322,44 @@
       </div>
     </div>
   </div>
+
+
+
 </main>
+
+<app-modal
+      [title]="'Confirmación'"
+      [isVisible]="isModalVisible()"
+      [isVisibleActions]="true"
+      [isLoaderActive]="isModalLoading()"
+      (close)="closeModal()"
+      (save)="guardarCambios()"
+    >
+      <p>¿Estás seguro que deseas continuar?</p>
+    </app-modal>
+
+
+
+<p class="text-primary font-bold text-3xl">ddd</p>
+<p class="text-secondary font-bold text-3xl">ddd</p>
+<p class="text-success font-bold text-3xl">ddd</p>
+<p class="text-info font-bold text-3xl">ddd</p>
+<p class="text-warning font-bold text-3xl">ddd</p>
+<p class="text-danger font-bold text-3xl">ddd</p>
+<p class="text-light font-bold text-3xl">light</p>
+<p class="text-dark font-bold text-3xl">ddd</p>
+
+<button class="bg-gr-primary text-white font-bold text-3xl px-12 py-6">ddd</button>
+
+<button class="bg-gr-secondary font-bold text-light text-3xl px-12 py-6">ddd</button>
+<button class="bg-gr-success font-bold text-light text-3xl px-12 py-6">ddd</button>
+<button class="bg-gr-info font-bold text-light text-3xl px-12 py-6">ddd</button>
+<button class="bg-gr-warning font-bold text-light text-3xl px-12 py-6">ddd</button>
+<button class="bg-gr-danger font-bold text-light text-3xl px-12 py-6">ddd</button>
+<button class="bg-gr-dark font-bold text-light text-3xl px-12 py-6">ddd</button>
+
+
+
 
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
 <!-- * * * * * * * * * * * The content above * * * * * * * * * * * * -->

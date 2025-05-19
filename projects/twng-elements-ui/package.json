@@ -1,9 +1,14 @@
 {
   "name": "twng-elements-ui",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "peerDependencies": {
     "@angular/common": "^19.2.0",
     "@angular/core": "^19.2.0"
+  },
+  "exports": {
+    "./styles/root.css": {
+      "default": "./styles/root.css"
+    }
   },
   "dependencies": {
     "tslib": "^2.3.0"
