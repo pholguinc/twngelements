@@ -1,8 +1,6 @@
+@import "tailwindcss";
 
-@import 'tailwindcss';
-
-
-:root{
+:root {
   --color-primary: #4099ff;
   --color-secondary: #6c757d;
   --color-success: #2ed8b6;
@@ -21,25 +19,77 @@
   --bg-gr-dark: linear-gradient(45deg, #343a40, #f8f9fa);
 }
 
-
 /* Text colors */
-.text-primary { color: var(--color-primary) !important; }
-.text-secondary { color: var(--color-secondary) !important; }
-.text-success { color: var(--color-success) !important; }
-.text-info { color: var(--color-info) !important; }
-.text-warning { color: var(--color-warning) !important; }
-.text-danger { color: var(--color-danger) !important; }
-.text-light { color: var(--color-light) !important; }
-.text-dark { color: var(--color-dark) !important; }
-
+.text-primary {
+  color: var(--color-primary) !important;
+}
+.text-secondary {
+  color: var(--color-secondary) !important;
+}
+.text-success {
+  color: var(--color-success) !important;
+}
+.text-info {
+  color: var(--color-info) !important;
+}
+.text-warning {
+  color: var(--color-warning) !important;
+}
+.text-danger {
+  color: var(--color-danger) !important;
+}
+.text-light {
+  color: var(--color-light) !important;
+}
+.text-dark {
+  color: var(--color-dark) !important;
+}
 
 /* Gradient colors*/
-.bg-gr-primary { background-image: var(--bg-gr-primary) !important; }
-.bg-gr-secondary { background-image: var(--bg-gr-secondary) !important; }
-.bg-gr-success { background-image: var(--bg-gr-success) !important; }
-.bg-gr-info { background-image: var(--bg-gr-info) !important; }
-.bg-gr-warning { background-image: var(--bg-gr-warning) !important; }
-.bg-gr-danger { background-image: var(--bg-gr-danger) !important; }
-.bg-gr-dark { background-image: var(--bg-gr-dark) !important; }
+.bg-gr-primary {
+  background-image: var(--bg-gr-primary) !important;
+}
+.bg-gr-secondary {
+  background-image: var(--bg-gr-secondary) !important;
+}
+.bg-gr-success {
+  background-image: var(--bg-gr-success) !important;
+}
+.bg-gr-info {
+  background-image: var(--bg-gr-info) !important;
+}
+.bg-gr-warning {
+  background-image: var(--bg-gr-warning) !important;
+}
+.bg-gr-danger {
+  background-image: var(--bg-gr-danger) !important;
+}
+.bg-gr-dark {
+  background-image: var(--bg-gr-dark) !important;
+}
 
+@theme {
+  --animate-fadeIn: fadeIn 0.5s ease-in-out forwards;
+  --animate-fadeOutDown: fadeOutDown 0.5s ease-in-out forwards;
+  --animate-fadeInUp: fadeInUp 0.5s ease-in-out forwards;
 
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+
+  @keyframes fadeOutDown {
+    0% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    100% {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+  }
+}

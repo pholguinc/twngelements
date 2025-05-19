@@ -1,38 +1,46 @@
-import { Component, signal } from '@angular/core';
-import { RouterModule, RouterOutlet } from '@angular/router';
-import { ModalComponent, TwngElementsUiComponent } from 'twng-elements-ui';
+import { Component, inject, signal, TemplateRef, ViewChild, ViewContainerRef } from '@angular/core';
+import { RouterModule } from '@angular/router';
+import { ModalService } from 'twng-elements-ui';
+import { CommonModule } from '@angular/common';
+import { PruebaComponent } from './shared/Prueba/Prueba.component';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterModule, ModalComponent],
+  imports: [RouterModule, CommonModule, PruebaComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })
 export class AppComponent {
   title = 'twngelements';
 
-  isModalVisible = signal(true);
-  isModalActionsVisible = signal(true);
-  isModalLoading = signal(false);
+  private modalService: ModalService = inject(ModalService);
 
+  @ViewChild('modalContainer', { read: ViewContainerRef, static: true })
+  modalContainer!: ViewContainerRef;
 
-
-  modalTitle = signal('Título del Modal');
+  @ViewChild('pruebaTemplate', { static: true })
+  pruebaTemplate!: TemplateRef<any>;
 
   openModal() {
-    this.isModalVisible.set(true);
+    this.modalService.openModal(
+      {
+        isModalOpen: true,
+        title: 'Título',
+        message: '¿Seguro?',
+        confirmText: 'Aceptar',
+        cancelText: 'Cancelar',
+        onConfirmCallback: () => {
+          this.fakeAsyncOperation();
+        },
+        contentTemplate: this.pruebaTemplate,
+      },
+      this.modalContainer
+    );
   }
 
-  closeModal() {
-    this.isModalVisible.set(false);
-  }
-
-  guardarCambios() {
-    this.isModalLoading.set(true);
-    // Simula un guardado:
-    setTimeout(() => {
-      this.isModalLoading.set(false);
-      this.isModalVisible.set(false);
-    }, 2000);
+  fakeAsyncOperation(): Promise<void> {
+    return new Promise((resolve) => setTimeout(resolve, 2000));
   }
 }
+
+
