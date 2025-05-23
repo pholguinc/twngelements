@@ -1,11 +1,33 @@
+<button (click)="openModal()">abrir modal</button>
 
-<button  (click)="openModal()">abrir modal</button>
+<twng-modal
+  [isVisible]="isModalOpen()"
+  [title]="'Eliminar elemento'"
+  [headerClass]="
+    'bg-gradient-to-r from-purple-400 to-purple-700 border-gray-200'
+  "
+  [message]="'¿Estás seguro de que deseas eliminar este elemento?'"
+  [confirmText]="'Sí, eliminar'"
+  [confirmButtonClass]="
+    'bg-gradient-to-r from-purple-400 to-purple-700 hover:from-purple-500 hover:to-purple-800'
+  "
+  [cancelButtonClass]="
+    'bg-gradient-to-r from-red-400 to-red-600 hover:from-red-500 hover:to-red-700'
+  "
+  [cancelText]="'Cancelar'"
+  [useAnimations]="false"
+  [isVisibleActions]="true"
+  (close)="onModalClose()"
+  (save)="onModalSave()"
+>
+  ddd
+</twng-modal>
 
-<ng-template #modalContainer></ng-template>
-<ng-template #pruebaTemplate>
-  <app-prueba></app-prueba>
-</ng-template>
-
+<twng-button
+  [classButton]="'font-bold text-md px-5 py-2 rounded-lg px-5 py-2'"
+  [colorButton]="'bg-gr-primary'"
+  >cccc</twng-button
+>
 
 <p class="text-primary font-bold text-3xl animate-fadeIn">ddd</p>
 <p class="text-secondary font-bold text-3xl">ddd</p>
@@ -16,16 +38,34 @@
 <p class="text-light font-bold text-3xl">light</p>
 <p class="text-dark font-bold text-3xl">ddd</p>
 
-<button class="bg-gr-primary text-white font-bold text-3xl px-12 py-6">ddd</button>
+<button class="bg-gr-primary text-white font-bold text-md px-5 py-2 rounded-lg">
+  ddd
+</button>
 
-<button class="bg-gr-secondary font-bold text-light text-3xl px-12 py-6">ddd</button>
-<button class="bg-gr-success font-bold text-light text-3xl px-12 py-6">ddd</button>
+<button class="bg-gr-secondary font-bold text-light text-3xl px-12 py-6">
+  ddd
+</button>
+<button class="bg-gr-success font-bold text-light text-3xl px-12 py-6">
+  ddd
+</button>
 <button class="bg-gr-info font-bold text-light text-3xl px-12 py-6">ddd</button>
-<button class="bg-gr-warning font-bold text-light text-3xl px-12 py-6">ddd</button>
-<button class="bg-gr-danger font-bold text-light text-3xl px-12 py-6">ddd</button>
+<button class="bg-gr-warning font-bold text-light text-3xl px-12 py-6">
+  ddd
+</button>
+<button class="bg-gr-danger font-bold text-light text-3xl px-12 py-6">
+  ddd
+</button>
 <button class="bg-gr-dark font-bold text-light text-3xl px-12 py-6">ddd</button>
 
-
-
-
 <router-outlet />
+<div class="p-8">
+  <twng-card
+    [title]="'Card Title'"
+    [textBadge]="'New'"
+    [imageUrl]="'https://images.unsplash.com/photo-1613545325278-f24b0cae1224?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=8'"
+    [description]="'This is a description of the card.'"
+    [colorBadge]="'bg-gr-primary'"
+    [alignment]="'full'"
+    [colorButton]="'bg-gr-primary hover:opacity-80'"
+  ></twng-card>
+</div>

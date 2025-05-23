@@ -1,0 +1,51 @@
+<div class="flex">
+  <div
+    class="bg-white rounded-xl overflow-hidden hover:shadow-xl transition-all shadow-2xl"
+  >
+    <div class="relative">
+      <img
+        [src]="imageUrl()"
+        alt="Product"
+        class="w-full h-52 object-cover"
+      />
+      <span
+        class="absolute top-3 right-3 {{colorBadge()}} text-white px-3 py-1 rounded-full text-sm font-medium"
+      >
+        {{ textBadge() }}
+      </span>
+    </div>
+
+    <div class="p-5 space-y-4">
+      <div>
+        <h3 class="text-xl font-bold text-gray-900">{{ title() }}</h3>
+        <p class="text-gray-500 mt-1">{{ description() }}</p>
+      </div>
+
+      @switch (alignment()) {
+         @case ('right') {
+              <div class="flex justify-end">
+                <button
+                  class="{{colorButton()}} text-white font-medium py-3 px-3 rounded-lg transition-colors cursor-pointer">
+                  Add to Cart
+                </button>
+              </div>
+
+      } @case ('left') {
+              <div class="flex justify-start">
+                <button
+                  class="{{colorButton()}} text-white font-medium py-3 px-3 rounded-lg transition-colors cursor-pointer">
+                  Add to Cart
+                </button>
+              </div>
+
+      } @case('full'){
+        <button
+              class="w-full {{colorButton()}} text-white font-medium py-3 px-3 rounded-lg transition-colors cursor-pointer"
+>
+          Add to Cart
+        </button>
+      }
+    }
+    </div>
+  </div>
+</div>

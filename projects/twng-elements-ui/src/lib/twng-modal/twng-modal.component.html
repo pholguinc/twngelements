@@ -1,3 +1,4 @@
+
 @if(isVisible()){
 <div
   class="fixed inset-0 z-40 bg-gray-500/75 transition-opacity"
@@ -6,14 +7,14 @@
 
 <div
   class="fixed inset-0 z-50 flex items-center justify-center p-4"
-    [class.animate-fadeIn]="isAnimating()"
-    [class.animate-fadeOutDown]="!isAnimating()"
+   [class.animate-fadeIn]="useAnimations() && isAnimating"
+  [class.animate-fadeOutDown]="useAnimations() && !isAnimating"
 >
   <div
     class="relative w-full max-w-4xl max-h-[90vh] overflow-y-auto bg-white rounded-lg shadow-sm"
   >
     <div
-      class="flex items-center justify-between p-4 md:p-5 border-b rounded-t bg-gradient-to-r from-purple-400 to-purple-700 border-gray-200"
+      class="flex items-center justify-between p-4 md:p-5 border-b rounded-t {{headerClass()}}"
     >
       <h3 class="text-xl font-semibold text-white">
         {{ title() }}
@@ -21,7 +22,7 @@
       <button
         type="button"
         (click)="onClose()"
-        class="text-white bg-transparent rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center"
+        class="text-white bg-transparent rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center cursor-pointer"
       >
         <svg
           class="w-3 h-3"
@@ -42,39 +43,36 @@
       </button>
     </div>
 
-     <div class="p-4 md:p-5 space-y-4">
-        <!-- Aquí mostramos el contenido dinámico -->
-        <ng-container *ngIf="contentTemplate; else defaultContent">
-          <ng-container *ngTemplateOutlet="contentTemplate"></ng-container>
-        </ng-container>
-
-        <ng-template #defaultContent>
-          <p>No hay contenido dinámico definido</p>
-        </ng-template>
-      </div>
+    <div class="p-4 md:p-5 space-y-4">
+      <ng-content></ng-content>
+    </div>
 
     @if(isVisibleActions()){
     <div class="flex w-full">
       <button
+        disabled
         type="button"
         [disabled]="isLoaderActive()"
         (click)="onSave()"
-        class="inline-flex items-center justify-center cursor-pointer w-1/2 bg-gradient-to-r from-purple-400 to-purple-700 text-white hover:from-purple-500 hover:to-purple-800 focus:outline-none font-medium text-sm px-5 py-4 text-center"
+        class="inline-flex items-center justify-center cursor-pointer w-1/2 text-white {{confirmButtonClass()}} focus:outline-none focus:none font-medium text-sm px-5 py-4 text-center"
       >
+
         @if(isLoaderActive()){
         <ng-container>
+
           <span class="ml-3">Cargando...</span>
         </ng-container>
+
         }@else {
-        <span>Guardar</span>
+        <span>{{confirmText()}}</span>
         }
       </button>
 
       <span
         (click)="onClose()"
-        class="cursor-pointer w-1/2 bg-gradient-to-r from-red-400 to-red-600 text-white hover:from-red-500 hover:to-red-700 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium text-sm px-5 py-4 text-center flex items-center justify-center"
+        class="cursor-pointer w-1/2 text-white {{cancelButtonClass()}} focus:outline-none focus:none font-medium text-sm px-5 py-4 text-center flex items-center justify-center"
       >
-        Cancelar
+        {{cancelText()}}
       </span>
     </div>
     }
