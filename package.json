@@ -9,7 +9,7 @@
     "test": "ng test",
     "build-library": "ng build twng-elements-ui",
     "start-library": "pnpm link ./projects/twng-elements-ui/ && ng serve --watch",
-    "build:css": "npx tailwindcss -i ./src/styles.css -o ./src/tauilwind.css --minify"
+    "build:css": "pnpm exec tailwindcss -i ./src/styles.css -o ./src/output.css --minify"
   },
   "private": false,
   "dependencies": {
@@ -22,7 +22,6 @@
     "@angular/router": "^19.2.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
-    "twng-elements-ui": "link:projects/twng-elements-ui",
     "zone.js": "~0.15.0"
   },
   "devDependencies": {
@@ -41,11 +40,5 @@
     "postcss": "^8.5.3",
     "tailwindcss": "^4.1.7",
     "typescript": "~5.7.2"
-  },
-  "pnpm": {
-    "overrides": {
-      "twng-elments-ui": "link:projects/twng-elments-ui",
-      "twng-elements-ui": "link:projects/twng-elements-ui"
-    }
   }
 }
