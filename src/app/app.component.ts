@@ -6,7 +6,7 @@ import { TwngCardComponent } from "../../projects/twng-elements-ui/src/lib/twng-
 
 @Component({
   selector: 'app-root',
-  imports: [RouterModule, CommonModule, TwngModalComponent, TwngButtonComponent, TwngCardComponent, TwngCardComponent],
+  imports: [RouterModule, CommonModule, TwngModalComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })
