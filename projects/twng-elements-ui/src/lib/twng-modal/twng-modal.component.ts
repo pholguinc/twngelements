@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, EventEmitter, input, Input, output, Output, signal, TemplateRef, Type, ViewEncapsulation } from '@angular/core';
-
+type ModalSize = 'sm' | 'md' | 'lg'| 'xl';
 @Component({
   selector: 'twng-modal',
   imports: [CommonModule],
@@ -27,6 +27,7 @@ export class TwngModalComponent {
   readonly cancelText = input<string>('');
   readonly isLoaderActive = signal(false);
   readonly isVisibleActions = input<boolean>(false);
+  public readonly size = input<ModalSize>('md');
 
   readonly close = output<void>();
   readonly save = output<void>();
@@ -35,6 +36,17 @@ export class TwngModalComponent {
 
   get isAnimating() {
     return this._isAnimating();
+  }
+
+  get sizeClass(): string {
+    const sizeMap: Record<ModalSize, string> = {
+      sm: 'max-w-md',
+      md: 'max-w-3xl',
+      lg: 'max-w-5xl',
+      xl: 'max-w-7xl',
+    };
+
+    return sizeMap[this.size()];
   }
 
   ngOnChanges(changes: any) {
